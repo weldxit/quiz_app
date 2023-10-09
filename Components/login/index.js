@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation from React Navigation
+import {useTheme }from '@react-navigation/native';
 
 export default function LoginPage() {
+  const color = useTheme().colors;
   const { navigate } = useNavigation(); // Get the navigation function
 
   const [username, setUsername] = useState('');
@@ -23,7 +25,7 @@ export default function LoginPage() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Username:</Text>
+      <Text style={[styles.label,  {color:color.text}]}>Username:</Text>
       <TextInput
         style={styles.input}
         value={username}
@@ -31,7 +33,7 @@ export default function LoginPage() {
         placeholder="Enter your username"
       />
 
-      <Text style={styles.label}>Password:</Text>
+      <Text style={[styles.label,  {color:color.text}]}>Password:</Text>
       <TextInput
         style={styles.input}
         value={password}

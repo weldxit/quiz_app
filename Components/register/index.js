@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Confetti from './confetti';
+import {
+  useTheme
+} from '@react-navigation/native';
+import { color } from 'react-native-elements/dist/helpers';
 export default function RegistrationForm({navigation}) {
+  const color = useTheme().colors;
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [school, setSchool] = useState('');
@@ -20,15 +25,15 @@ export default function RegistrationForm({navigation}) {
   return (
     <SafeAreaProvider>
     <View style={styles.container}>
-      <Text style={styles.label}>Name:</Text>
+      <Text style={[styles.label,  {color:color.text}]}>Name:</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, {color:color.text}]}
         value={name}
         onChangeText={setName}
         placeholder="Enter your name"
       />
 
-      <Text style={styles.label}>Age:</Text>
+      <Text style={[styles.label,  {color:color.text}]}>Age:</Text>
       <TextInput
         style={styles.input}
         value={age}
@@ -37,7 +42,7 @@ export default function RegistrationForm({navigation}) {
         keyboardType="numeric"
       />
 
-      <Text style={styles.label}>School:</Text>
+      <Text style={[styles.label,  {color:color.text}]}>School:</Text>
       <TextInput
         style={styles.input}
         value={school}
@@ -60,6 +65,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     marginBottom: 4,
+
   },
   input: {
     height: 40,
